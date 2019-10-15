@@ -24,13 +24,17 @@
     <h1>{% if category %}{{ category.name }}{% else %}{% trans "Products" %}{% endif %}</h1>
     {% for product in products %}
     <div class="item">
-        <a href="{{ product.get_absolute_url }}">
-            <img src="{% if product.image %}{{ product.image.url }}{% else %}
-                    {% static "img/no_image.png" %}{% endif %}">
-        </a>
-        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-        <br>
-        {{ product.price }}€
+            {% load thumbnail %}
+            {% thumbnail product.image "x200" crop="center" as pim %}
+            <a href="{{ product.get_absolute_url }}">
+                <img src="{% if pim %}{{ pim.url }}{% else %}
+                        {% static "img/no_image.png" %}{% endif %}">
+            </a>
+            {% endthumbnail %}
+            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+            <br>
+            
+        {{ product.price }} €
     </div>
     {% endfor %}
 </div>

@@ -32,3 +32,4 @@ urlpatterns = i18n_patterns(
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                             document_root=settings.MEDIA_ROOT)
+# Never serve static files with Django in a production environment
