@@ -25,9 +25,15 @@
                 <tr>
                     <td>
                         <a href="{{ product.get_absolute_url }}">
+                                {% load thumbnail %}
+                                {% thumbnail product.image "x150" as pim %}
                             <img src="{% if product.image %}{{ product.image.url }}{% else %}
                             {% static "img/no_image.png" %}{% endif %}">
+                            {% endthumbnail %}
                         </a>
+
+
+
                     </td>
                     <td>{{ product.name }}</td>
                     <td>
