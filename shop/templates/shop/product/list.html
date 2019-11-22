@@ -25,7 +25,7 @@
     {% for product in products %}
     <div class="item">
             {% load thumbnail %}
-            {% thumbnail product.image "x200" crop="center" as pim %}
+            {% thumbnail product.image "215x150" crop="center" as pim %}
             <a href="{{ product.get_absolute_url }}">
                 <img src="{% if pim %}{{ pim.url }}{% else %}
                         {% static "img/no_image.png" %}{% endif %}">
